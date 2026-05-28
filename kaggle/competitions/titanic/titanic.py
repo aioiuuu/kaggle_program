@@ -2,18 +2,18 @@ import pandas as pd
 import xgboost as xgb
 
 # ======================
-# 1. 读取文件（严格按你的基准）
+# 1. 读取文件
 # ======================
 sub_template = pd.read_csv("gender_submission.csv")
 train = pd.read_csv("train.csv")
 test = pd.read_csv("test.csv")
 
-# 强制测试集顺序 = 你的基准顺序（最关键！）
+# 强制测试集顺序 
 test = test.set_index("PassengerId").loc[sub_template["PassengerId"]].reset_index()
 
 
 # ======================
-# 2. 预处理函数（无报错版）
+# 2. 预处理函数
 # ======================
 def preprocess(df):
     df = df.copy()
@@ -76,7 +76,7 @@ model = xgb.XGBClassifier(
 model.fit(X, y)
 
 # ======================
-# 6. 生成提交文件（100% 匹配你的）
+# 6. 生成提交文件
 # ======================
 sub = sub_template.copy()
 sub["Survived"] = model.predict(test[features])
