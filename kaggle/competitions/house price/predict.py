@@ -21,7 +21,7 @@ df = df[df['SalePrice'] > df['SalePrice'].quantile(0.01)]
 X = df.drop('SalePrice', axis=1)
 y = df['SalePrice']
 
-# 取对数（大幅提升精度）
+# 取对数
 y_log = np.log(y)
 
 # 划分训练集测试集
@@ -51,7 +51,7 @@ preprocessor = ColumnTransformer(
     ]
 )
 
-# ===================== 5. 直接训练 XGBoost（不做 Lasso 筛选） =====================
+# ===================== 5. 直接训练 XGBoost =====================
 print("🔹 训练 XGBoost 模型中...")
 
 # 预处理
@@ -85,7 +85,7 @@ te_r2, te_mae, te_rmse = metrics(y_test, y_te_pred)
 
 print("\n" * 2)
 print("=" * 55)
-print("🏆 模型训练完成（无报错版）")
+print(" 模型训练完成")
 print("=" * 55)
 print(f"训练集 R²: {tr_r2:.4f} | MAE: {tr_mae:.4f} | RMSE: {tr_rmse:.4f}")
 print(f"测试集 R²: {te_r2:.4f} | MAE: {te_mae:.4f} | RMSE: {te_rmse:.4f}")
@@ -104,9 +104,9 @@ submit = pd.DataFrame({
     'Id': ids,
     'SalePrice': preds_real
 })
-submit.to_csv('房价预测结果_最终版.csv', index=False)
+submit.to_csv('房价预测结果.csv', index=False)
 
-print("✅ 预测完成！已保存：房价预测结果_最终版.csv")
+print("预测完成！已保存：房价预测结果.csv")
 print(submit.head())
 
 # ===================== 8. 画图 =====================
