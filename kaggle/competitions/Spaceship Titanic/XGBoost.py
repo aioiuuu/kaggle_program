@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
-from xgboost import XGBClassifier  # 使用 XGBoost
+from xgboost import XGBClassifier  
 
 # ======================
 # 1. 读取训练数据
@@ -77,7 +77,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 # ======================
-# 9. 训练 XGBoost 模型（准确率更高）
+# 9. 训练 XGBoost 模型
 # ======================
 xgb_model = XGBClassifier(
     n_estimators=500,  # 更多树
@@ -95,11 +95,11 @@ xgb_model.fit(X_train, y_train)
 
 # 评估
 y_pred = xgb_model.predict(X_test)
-print(f'✅ XGBoost 验证集准确率: {accuracy_score(y_test, y_pred) * 100:.2f}%')
+print(f' XGBoost 验证集准确率: {accuracy_score(y_test, y_pred) * 100:.2f}%')
 
 # 特征重要性
 importance = pd.Series(xgb_model.feature_importances_, index=X_train.columns)
-print("\n🔥 Top 10 特征重要性:")
+print("\n Top 10 特征重要性:")
 print(importance.sort_values(ascending=False).head(10))
 
 # ======================
@@ -131,7 +131,7 @@ x_test['HomePlanet'] = x_test['HomePlanet'].fillna(df['HomePlanet'].mode()[0])
 x_test['Destination'] = x_test['Destination'].fillna(df['Destination'].mode()[0])
 x_test['RoomNumber'] = x_test['RoomNumber'].astype(int)
 
-# 类别编码（使用训练集的编码器）
+# 类别编码
 for col in categorical_cols:
     le = label_encoders[col]
     x_test[col] = x_test[col].fillna('Unknown')
@@ -155,4 +155,4 @@ submission = pd.DataFrame({
 })
 
 submission.to_csv('submission.csv', index=False)
-print("\n🎉 预测完成！最终提交文件已保存为：submission.csv")
+print("\n预测完成！最终提交文件已保存为：submission.csv")
