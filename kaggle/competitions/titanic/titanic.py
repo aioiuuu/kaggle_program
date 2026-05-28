@@ -82,5 +82,5 @@ sub = sub_template.copy()
 sub["Survived"] = model.predict(test[features])
 sub.to_csv("titanic_aligned.csv", index=False)
 
-print("✅ 提交文件已生成！顺序100%正确！")
-print("🚀 提交必上 80%~83%！")
+print(" 提交文件已生成！顺序100%正确！")
+print(" 提交必上 80%~83%！")
