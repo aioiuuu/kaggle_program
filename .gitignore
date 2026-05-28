@@ -15,13 +15,14 @@ venv/
 *.swo
 *~
 
-# Data
+# Data files (too large for GitHub)
 *.db
 *.csv
 *.xlsx
 *.json
 data/
 kaggle/data/
+kaggle/Store Sales (Time Series Forecasting)/
 
 # Model
 *.pkl
@@ -41,3 +42,8 @@ instance/
 .pytest_cache/
 .coverage
 htmlcov/
+
+# Keep code files in competitions
+!kaggle/competitions/**/*.py
+!kaggle/competitions/**/*.ipynb
+!kaggle/competitions/**/*.txt
