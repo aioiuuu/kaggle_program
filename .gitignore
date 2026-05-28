@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Data
+*.db
+*.csv
+*.xlsx
+*.json
+data/
+kaggle/data/
+
+# Model
+*.pkl
+*.h5
+model_results/
+
+# Logs
+*.log
+training_log.txt
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Flask
+instance/
+.pytest_cache/
+.coverage
+htmlcov/
