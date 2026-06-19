@@ -50,3 +50,7 @@
 1.  安装依赖：
     ```bash
     pip install -r requirements.txt
+    
+## 联系方式
+
+q_wr28857wfu@outlook.com
